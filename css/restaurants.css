@@ -1,0 +1,177 @@
+@import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
+body {
+  padding: 0px;
+  margin: 0px;
+  font-family: "Righteous", cursive;
+  overflow-x: hidden;
+}
+header {
+  background-color: aqua;
+  width: 100%;
+  height: 5vw;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+}
+header nav {
+  position: relative;
+  width: 100%;
+  height: 3vw;
+  margin: auto;
+  top: 1vw;
+  /* background-color: blanchedalmond; */
+}
+header nav a {
+  font-weight: 700;
+  font-size: 1.5vw;
+  top: 0.5vw;
+  position: relative;
+  float: right;
+  margin-right: 3vw;
+  text-decoration: none;
+}
+header nav a:hover{
+  color: red;
+}
+header nav a:first-of-type {
+  float: left;
+  margin-left: 7vw;
+  font-size: 2vw;
+}
+.promo {
+  background: black;
+  height: 22vw;
+  margin: 1vw;
+  position: relative;
+  top: 11vh;
+  box-shadow: 0.3vw 0.7vw 1vw;
+}
+.promo img {
+  width: 100%;
+  height: 100%;
+}
+.promo .points {
+  position: relative;
+  display: flex;
+  height: fit-content;
+  top: -2vw;
+  left: 48%;
+}
+.promo .point {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 100%;
+  height: 0.8vw;
+  width: 0.8vw;
+  margin: 0.3vw;
+}
+.promo .point:hover {
+  cursor: pointer;
+  background-color: white;
+}
+.promo .point:nth-child(2) {
+  background-color: white;
+}
+article {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  width: 100%;
+}
+article aside {
+  position: relative;
+  top: 3vw;
+  left: -8vw;
+}
+article .menu {
+  background: rgb(241 236 236);
+  box-shadow: 0.3vw 0.4vw 1vw rgb(0 0 0 / 70%);
+  /* height: 5vw; */
+  flex-direction: column;
+  /* width: 80%; */
+  margin: 2vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1vw;
+}
+article .menu img {
+  margin: 1vw;
+  transition: 0.7s;
+}
+article .menu img:hover {
+  transform: rotate(-20deg);
+  cursor: pointer;
+}
+article .menu img:nth-child(even):hover {
+  transform: rotate(20deg);
+}
+article .restaurant {
+  background: rgb(241 236 236);
+  box-shadow: 0.3vw 0.4vw 1vw rgb(0 0 0 / 70%);
+  margin: 2vw;
+  border-radius: 1vw;
+  align-items: center;
+  display: flex;
+  padding: 0.4vw;
+  min-width: 35vw;
+}
+article .restaurant:hover {
+  cursor: pointer;
+}
+article .image {
+  height: 14vw;
+  width: 15vw;
+}
+article .image img {
+  width: 100%;
+  height: 100%;
+  border-radius: 1vw;
+}
+article .verticle-line {
+  height: 15vw;
+  width: 0.2vw;
+  margin-left: 0.3vw;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 1vw;
+}
+article .info {
+  display: flex;
+  flex-direction: column;
+  width: -webkit-fill-available;
+}
+article .info h1 {
+  margin: 0px;
+  margin-left: 1vw;
+  margin-bottom: 1vw;
+  font-size: xx-large;
+}
+article .info p {
+  margin: 1vw;
+  margin-left: 2vw;
+  font-size: large;
+  display: flex;
+  align-content: center;
+}
+article .info p img {
+  margin-right: 1vw;
+}
+h1:first-of-type {
+  text-align: center;
+  font-size: xxx-large;
+  margin-top: 10vw;
+}
+footer{
+  background: #00FFFF;
+  height: 5vw;
+  margin-top: 10vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.restaurants {
+  position: relative;
+  left: -4vw;
+}
+#all {
+  height: 5vw;
+}
