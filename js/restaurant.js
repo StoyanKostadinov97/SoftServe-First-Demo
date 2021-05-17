@@ -49,7 +49,7 @@ promoPointNext.addEventListener('click', () => {
 
 function changePic() {
 
-    const url = './img/'
+    const url = '../img/'
 
     promoBanner[0].children[0].src = url + picArr[numOfChange];
 

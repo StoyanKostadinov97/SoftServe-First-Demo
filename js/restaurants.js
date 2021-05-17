@@ -175,7 +175,7 @@ menu.addEventListener('click', (e) => {
 
 function changePic() {
 
-    const url = './img/'
+    const url = '../img/'
 
     promoBanner[0].children[0].src = url + picArr[numOfChange];
 
@@ -220,7 +220,7 @@ function renderRestaurant(parent, child) {
     section.appendChild(imgDiv);
 
     const img = document.createElement('img');
-    img.src = `./img/${child.img}`;
+    img.src = `../img/${child.img}`;
     imgDiv.appendChild(img);
 
     const verticleLine = document.createElement('div');
@@ -237,7 +237,7 @@ function renderRestaurant(parent, child) {
 
     const p1 = document.createElement('p');
     p1.innerHTML = `
-    <img src="./icons/plate.png" alt="">
+    <img src="../icons/plate.png" alt="">
     <span>
         ${child.foodInfo}
     </span>`;
@@ -245,7 +245,7 @@ function renderRestaurant(parent, child) {
 
     const p2 = document.createElement('p');
     p2.innerHTML = `
-    <img src="./icons/clock.png" alt="">
+    <img src="../icons/clock.png" alt="">
     <span>
         ${child.time}
     </span>`;
@@ -253,7 +253,7 @@ function renderRestaurant(parent, child) {
 
     const p3 = document.createElement('p');
     p3.innerHTML = `
-    <img src="./icons/rating.png" alt="">
+    <img src="../icons/rating.png" alt="">
     <span>
         ${child.rating}
     </span>`;
