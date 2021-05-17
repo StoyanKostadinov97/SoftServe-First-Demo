@@ -65,10 +65,6 @@ function renderMenu() {
     });
 }
 
-function renderNumCart() {
-    document.querySelector('header nav:last-child div').innerText = chosenFood.length;
-}
-
 function renderFood(parent, child) {
 
     const section = document.createElement('section');
@@ -117,6 +113,10 @@ function renderFood(parent, child) {
     })
 
     parent.appendChild(section);
+}
+
+function renderNumCart() {
+    document.querySelector('header nav:last-child div').innerText = chosenFood.length;
 }
 
 function renderCart() {
