@@ -71,15 +71,57 @@ header nav a:first-of-type {
 .promo .point:nth-child(2) {
   background-color: white;
 }
+.search-section{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: 10vw; */
+  background: #00FFFF;
+  margin: auto;
+  padding: 0.5vw;
+  width: fit-content;
+  border-radius: 8vw;
+}
+.search-section div{
+  display: flex;
+  background-color: white;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8vw;
+}
+.search-section div img{
+  height: 2vw;
+  margin-left: 2vw;
+}
+.search-section div input{
+  width: 28vw;
+  border: none;
+  margin: 0vw 1vw 0vw 1vw;
+  font-size: larger;
+}
+.search-section div input:focus{
+  outline: none;
+  border-bottom: 0.2vw solid #12d0d0;;
+}
+.search-section div button{
+  background: #12d0d0;
+  border: 0.3vw solid white;
+  color: white;
+  font-size: x-large;
+  border-radius: 8vw;
+}
+.search-section div button:hover{
+  cursor: pointer;
+}
 article {
   display: flex;
   position: relative;
   justify-content: center;
   width: 100%;
+  margin-top: 2vw;
 }
 article aside {
   position: relative;
-  top: 3vw;
   left: -8vw;
 }
 article .menu {
