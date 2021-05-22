@@ -3,6 +3,16 @@ body {
   padding: 0px;
   margin: 0px;
   font-family: "Righteous", cursive;
+  overflow-x: hidden;
+}
+body::-webkit-scrollbar
+{
+	width: 0.65vw;
+	background-color: #f1ecec;
+}
+body::-webkit-scrollbar-thumb
+{
+	background-color: #12d0d0;
 }
 header {
   background-color: aqua;
@@ -98,6 +108,7 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 101%;
 }
 .step {
   height: 20vw;

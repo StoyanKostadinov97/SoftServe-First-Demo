@@ -17,6 +17,7 @@ window.setInterval(changePic, 4000);
 
 window.addEventListener('load', () => {
     document.getElementById('restaurantName').innerText = restaurant.name;
+    document.getElementById('restaurantName-in-nav').innerText = restaurant.name;
     renderNumCart();
 
     document.querySelector('#shoppingCart').addEventListener('click', (e) => {

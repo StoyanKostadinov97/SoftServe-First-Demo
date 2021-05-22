@@ -5,6 +5,13 @@ body {
   font-family: "Righteous", cursive;
   overflow-x: hidden;
 }
+body::-webkit-scrollbar {
+  width: 0.65vw;
+  background-color: #f1ecec;
+}
+body::-webkit-scrollbar-thumb {
+  background-color: #12d0d0;
+}
 header {
   background-color: aqua;
   width: 100%;
@@ -96,25 +103,35 @@ header nav:last-child div {
   box-shadow: 0.3vw 0.4vw 1vw rgb(0 0 0 / 70%);
   border-radius: 2vw;
 }
-.navigation p{
+.navigation p {
   margin: 0vw 1vw 0vw 1vw;
 }
-.navigation a{
+.navigation a {
   text-decoration: none;
   transition: 1s;
 }
-.navigation a:hover{
+.navigation a:hover {
   font-size: larger;
   font-weight: 800;
   cursor: pointer;
 }
-.navigation a:last-of-type{
+.navigation a:last-of-type {
   pointer-events: none;
 }
 
 h1:first-of-type {
   text-align: center;
   font-size: xxx-large;
+}
+h1:first-of-type span {
+  font-size: larger;
+  color: #b91105;
+}
+article {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 article .restaurant {
   background: rgb(241 236 236);
@@ -124,7 +141,7 @@ article .restaurant {
   align-items: center;
   display: flex;
   padding: 0.4vw;
-  min-width: 35vw;
+  width: 58vw;
 }
 article .image {
   height: 14vw;
@@ -184,13 +201,14 @@ aside h1 {
   margin: auto;
   font-size: 2vw;
 }
-footer{
-  background: #00FFFF;
+footer {
+  background: #00ffff;
   height: 5vw;
   margin-top: 10vw;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 101%;
 }
 .buy {
   width: 15%;
@@ -200,7 +218,7 @@ footer{
   font-size: 1.6vw;
   font-weight: 700;
   position: relative;
-  left: 63vw;
+  left: 38vw;
   margin-bottom: 1vw;
   border-radius: 10vw;
   box-shadow: 0.3vw 0.4vw 1vw rgb(0 0 0 / 70%);
@@ -213,25 +231,31 @@ footer{
   position: relative;
   left: -4vw;
 }
-.cart-food{
+.cart-food {
   display: flex;
-    align-items: center;
+  align-items: center;
+  margin: 0vw 1vw 0vw 1vw;
+  width: -webkit-fill-available;
 }
-.cart-food img{
+.cart-food img {
   height: 5vw;
 }
-.cart-food h1{
+.cart-food h1 {
   font-size: 1.5vw;
   font-weight: 300;
-  margin: 0vw 2vw 0vw 1vw;
+  margin: auto;
+  width: 10vw;
 }
-.cart-food .delete{
-  margin-left: 1vw;
+.cart-food p {
+  margin: auto;
+}
+.cart-food .delete {
+  margin: auto;
   border: none;
   border-radius: 100%;
   height: 2vw;
   width: 2vw;
-  background: #00FFFF;
+  background: #00ffff;
   cursor: pointer;
 }
 #no-items {
