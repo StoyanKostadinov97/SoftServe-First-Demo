@@ -12,6 +12,7 @@ header {
   position: fixed;
   top: 0;
   z-index: 10;
+  box-shadow: 0.3vw 0.4vw 1vw rgb(0 0 0 / 70%);
 }
 header nav {
   position: relative;
@@ -56,9 +57,7 @@ header nav:last-child div {
 .promo {
   background: black;
   height: 22vw;
-  margin: 1vw;
-  position: relative;
-  top: 11vh;
+  margin: 10vw 1vw 3vw 1vw;
   box-shadow: 0.3vw 0.7vw 1vw;
 }
 .promo img {
@@ -86,11 +85,36 @@ header nav:last-child div {
 .promo .point:nth-child(2) {
   background-color: white;
 }
+.navigation {
+  display: flex;
+  align-items: center;
+  margin: 0vw 2vw 0vw 2vw;
+  width: fit-content;
+  min-height: 4vw;
+  background: #f1ecec;
+  padding: 0vw 2vw 0vw 2vw;
+  box-shadow: 0.3vw 0.4vw 1vw rgb(0 0 0 / 70%);
+  border-radius: 2vw;
+}
+.navigation p{
+  margin: 0vw 1vw 0vw 1vw;
+}
+.navigation a{
+  text-decoration: none;
+  transition: 1s;
+}
+.navigation a:hover{
+  font-size: larger;
+  font-weight: 800;
+  cursor: pointer;
+}
+.navigation a:last-of-type{
+  pointer-events: none;
+}
 
 h1:first-of-type {
   text-align: center;
   font-size: xxx-large;
-  margin-top: 10vw;
 }
 article .restaurant {
   background: rgb(241 236 236);
