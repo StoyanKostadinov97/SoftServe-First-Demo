@@ -37,6 +37,7 @@ header nav a {
   float: right;
   margin-right: 3vw;
   text-decoration: none;
+  color: #551a8b;
 }
 header nav a:hover {
   color: red;
@@ -164,6 +165,10 @@ article {
 article aside {
   position: relative;
   left: -8vw;
+}
+article h2 {
+  font-weight: 100;
+  font-size: 3vw;
 }
 article .menu {
   background: rgb(241 236 236);

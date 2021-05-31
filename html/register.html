@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/register.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="./home.html">LOGO</a>
+            <a href="./register.html">Register</a>
+            <a href="./login.html">Login</a>
+        </nav>
+    </header>
+    <article>
+        <section class="blue">
+            <h1>Register</h1>
+            <form>
+                <div class="columns">
+                    <label >Username:</label>
+                    <label >Password:</label>
+                </div>
+                <div class="columns">
+                    <input id="username" type="text">
+                    <input id="password" type="password">
+                </div>
+            </form>
+        </section>
+        <section class="white">
+            <form>
+                <div class="columns">
+                    <label >Repeat Password:</label>
+                    <label >Email:</label>
+                </div>
+                <div class="columns">
+                    <input id="repeat-password" type="password">
+                    <input id="email" type="email">
+                </div>
+            </form>
+            <button>Submit</button>
+            <div class="messages"></div>
+        </section>
+    </article>
+    <footer>
+        Copyright &copy; <span id="year"></span>, Stoyan Kostadinov
+    </footer>
+    <script src="../js/register.js"></script>
+</body>
+
+</html>

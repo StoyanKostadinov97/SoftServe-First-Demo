@@ -37,6 +37,7 @@ header nav a {
   float: right;
   margin-right: 3vw;
   text-decoration: none;
+  color: #551a8b;
 }
 header nav a:hover {
   color: red;

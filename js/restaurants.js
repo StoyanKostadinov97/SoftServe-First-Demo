@@ -139,6 +139,8 @@ const promoPointPrev = document.getElementsByClassName('point')[0];
 const promoPointNext = document.getElementsByClassName('point')[2];
 const menu = document.getElementsByClassName('menu')[0];
 const footerYear=document.getElementById('year');
+const searchButton=document.getElementById('search-btn');
+const searchInput=document.getElementById('search-input');
 footerYear.innerText=new Date().getFullYear();
 
 let numOfChange = 0;
@@ -172,6 +174,9 @@ menu.addEventListener('click', (e) => {
     renderRestaurants(restaurants, sort);
 });
 
+searchButton.addEventListener('click',()=>{
+    search(searchInput.value);
+})
 
 function changePic() {
 
@@ -187,20 +192,18 @@ function clearAllRestaurants() {
     const restaurantsSection = document.getElementsByClassName('restaurants')[0];
     const restaurantArr = document.getElementsByClassName('restaurant');
 
-    for (let i = restaurantArr.length - 1; i >= 0; i--) {
-        restaurantsSection.removeChild(restaurantArr[i]);
-    }
+    restaurantsSection.innerHTML='';
 }
 
 function renderRestaurants(arr, sort) {
     const restaurantsSection = document.getElementsByTagName('article')[0].children[1];
     if (sort === 'all') {
-        for (let i = 0, length = restaurants.length; i < length; i++) {
-            renderRestaurant(restaurantsSection, restaurants[i]);
+        for (let i = 0, length = arr.length; i < length; i++) {
+            renderRestaurant(restaurantsSection, arr[i]);
         }
     } else {
-        for (let i = 0, length = restaurants.length; i < length; i++) {
-            const element = restaurants[i];
+        for (let i = 0, length = arr.length; i < length; i++) {
+            const element = arr[i];
             if (element.food === sort) {
                 renderRestaurant(restaurantsSection, element);
             } else { continue; }
@@ -265,5 +268,22 @@ function renderRestaurant(parent, child) {
     })
 
     parent.appendChild(section);
+}
+
+function search(name){
+    const resultArr=[];
+    
+    restaurants.forEach(element => {
+        if(element.name.toUpperCase().includes(name.toUpperCase()))resultArr.push(element);
+    });
+    clearAllRestaurants();
+    if(resultArr.length!=0){
+        renderRestaurants(resultArr,'all');
+    } else {
+        const section=document.getElementsByClassName('restaurants')[0];
+        const h2=document.createElement('h2');
+        h2.innerText="No restaurants found"
+        section.appendChild(h2);
+    }
 }
 
