@@ -1,66 +1,21 @@
-const picArr = ['promo-candy.jpg', 'promo-summer.jpg', 'promo-sushi.jpg'];
-
-const promoBanner = document.getElementsByClassName('promo');
-const promoPointPrev = document.getElementsByClassName('point')[0];
-const promoPointNext = document.getElementsByClassName('point')[2];
-const cart = document.getElementsByTagName('aside')[0];
-const footerYear=document.getElementById('year');
-footerYear.innerText=new Date().getFullYear();
-
-let numOfChange = 0;
 const restaurant = localStorage.chosenRest ? JSON.parse(localStorage.chosenRest) : undefined;
-const chosenFood = localStorage.chosenFood ? JSON.parse(localStorage.chosenFood) : [];
-let cartClicked = false;
-let total = 0;
 
-window.setInterval(changePic, 4000);
+const footerYear = document.getElementById('year');
+footerYear.innerText = new Date().getFullYear();
+
+let isGivedRating = false;
 
 window.addEventListener('load', () => {
-    document.getElementById('restaurantName').innerText = restaurant.name;
-    document.getElementById('restaurantName-in-nav').innerText = restaurant.name;
-    renderNumCart();
-
-    document.querySelector('#shoppingCart').addEventListener('click', (e) => {
-        e.preventDefault();
-        cartClicked = cartClicked ? false : true;
-        renderCart();
-        if (cartClicked) cart.style.display = 'flex';
-        else cart.style.display = 'none';
-    });
-
+    checkFavouritesRestourant(restaurant.name);
     renderMenu();
-
-    if (chosenFood.length > 0) {
-        chosenFood.forEach(element => {
-            renderFoodInCart(element);
-        });
-    }
-})
-
-promoPointPrev.addEventListener('click', () => {
-    if (numOfChange == 0) numOfChange = 1;
-    else if (numOfChange == 1) numOfChange = 2;
-    else numOfChange -= 2;
-    changePic();
 });
 
-promoPointNext.addEventListener('click', () => {
-    changePic();
-});
-
-function changePic() {
-
-    const url = '../img/'
-
-    promoBanner[0].children[0].src = url + picArr[numOfChange];
-
-    numOfChange = numOfChange < 2 ? numOfChange + 1 : 0;
-
-}
+document.getElementById('restaurantName').innerText = restaurant ? restaurant.name : '';
+document.getElementById('restaurantName-in-nav').innerText = restaurant ? restaurant.name : '';
 
 function renderMenu() {
     const parent = document.getElementsByTagName('article')[0];
-    const menu = restaurant.menu;
+    const menu = restaurant ? restaurant.menu : [];
     menu.forEach(element => {
         renderFood(parent, element);
     });
@@ -107,78 +62,83 @@ function renderFood(parent, child) {
     infoDiv.appendChild(btn);
 
     btn.addEventListener('click', () => {
-        chosenFood.push(child);
+        const obj = chosenFood.find(x => x.name === child.name);
+        if (!obj) {
+            chosenFood.push({ name: child.name, num: 1, obj: child });
+            renderFoodInCart({ name: child.name, num: 1, obj: child });
+            renderNumCart();
+        }
+        else {
+            obj.num++;
+            document.getElementById('cart').innerHTML = '';
+            updateFoodInCart();
+        }
+
         localStorage.chosenFood = JSON.stringify(chosenFood);
-        renderNumCart();
-        renderFoodInCart(child);
     })
 
     parent.appendChild(section);
 }
 
-function renderNumCart() {
-    document.querySelector('header nav:last-child div').innerText = chosenFood.length;
-}
-
-function renderCart() {
-    if (chosenFood.length > 0) {
-        document.getElementById('no-items').style.display = 'none';
-        document.getElementById('total').style.display = 'block';
-        document.getElementById('total-price').innerText = total.toFixed(2);
-    } else {
-        document.getElementById('no-items').style.display = 'flex';
-        document.getElementById('total').style.display = 'none';
+function checkFavouritesRestourant(name) {
+    if (!user || !user.favourite) return;
+    if (user.favourite.findIndex(x => x.name == name) > -1) {
+        $('#favourite-star').prop('src', '../icons/full-star.png');
     }
 }
 
-function renderFoodInCart(food) {
-    const section = document.createElement('section');
-    section.className = 'cart-food';
+$('.stars').hover(
+    function () {
+        if (isGivedRating) return;
+        let id = this.id.split('-')[0];
 
-    const img = document.createElement('img');
-    img.src = food.img;
-    section.appendChild(img);
+        for (let i = 1; i <= id; i++) {
+            $(`#${i}-star`).prop('src', '../icons/full-star-big.png');
+        }
 
-    const h1 = document.createElement('h1');
-    h1.innerText = food.name;
-    section.appendChild(h1);
+    },
+    function () {
+        if (isGivedRating) return;
+        let id = this.id.split('-')[0];
 
-    const price = document.createElement('p');
-    price.innerText = food.price;
-    section.appendChild(price);
+        for (let i = 1; i <= id; i++) {
+            $(`#${i}-star`).prop('src', '../icons/empty-star-big.png');
+        }
 
-    const btn = document.createElement('button');
-    btn.className = 'delete';
-    btn.innerText = '-';
-    btn.addEventListener('click', (e) => {
-        cartRemoveHandler(e,food);
-    })
-    section.appendChild(btn);
+    });
 
-    cart.appendChild(section);
-    increasePrice(food.price);
-}
+$('.stars').click(function () {
+    isGivedRating = true;
+    let id = this.id.split('-')[0];
 
-function cartRemoveHandler(event, element) {
-    decreasePrice(element.price);
-    const target = event.target.parentElement;
-    cart.removeChild(target);
-    const index=chosenFood.findIndex(x=>x==element);
-    chosenFood.splice(index,1);
-    renderNumCart();
-    localStorage.chosenFood = JSON.stringify(chosenFood);
-}
+    for (let i = 1; i <= id; i++) {
+        $(`#${i}-star`).prop('src', '../icons/full-star-big.png');
+    }
+})
 
-function increasePrice(priceString) {
-    const arr = priceString.split(' ');
-    price = +arr[0];
-    total += price;
-    document.getElementById('total-price').innerText = total.toFixed(2);
-}
+$('#favourite-star').click(function () {
+    const user = localStorage.user ? JSON.parse(localStorage.user) : undefined;
+    const index = user ? user.favourite.findIndex(x => x === restaurant.name) : -1;
+    if(!user){
+        alert(' You need to be logged in to add favourites!');
+        return;
+    }
+    if (index >= 0) {
 
-function decreasePrice(priceString) {
-    const arr = priceString.split(' ');
-    price = +arr[0];
-    total -= price;
-    document.getElementById('total-price').innerText = total.toFixed(2);
-}
+        $(this).prop('src', '../icons/empty-star.png');
+        user.favourite.splice(index, 1);
+
+        localStorage.user = JSON.stringify(user);
+    } else {
+
+        $(this).prop('src', '../icons/full-star.png');
+        if (user.favourite) {
+            user.favourite.push(restaurant.name);
+        } else {
+            user.favourite = [];
+            user.favourite.push(restaurant.name);
+        }
+
+        localStorage.user = JSON.stringify(user);
+    }
+})

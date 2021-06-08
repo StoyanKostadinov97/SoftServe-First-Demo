@@ -1,4 +1,3 @@
-const picArr = ['promo-candy.jpg', 'promo-summer.jpg', 'promo-sushi.jpg'];
 const restaurants = [
     {
         name: 'Best Burgers',
@@ -134,38 +133,22 @@ const restaurants = [
     }
 ]
 
-const promoBanner = document.getElementsByClassName('promo');
-const promoPointPrev = document.getElementsByClassName('point')[0];
-const promoPointNext = document.getElementsByClassName('point')[2];
-const menu = document.getElementsByClassName('menu')[0];
-const footerYear=document.getElementById('year');
-const searchButton=document.getElementById('search-btn');
-const searchInput=document.getElementById('search-input');
-footerYear.innerText=new Date().getFullYear();
 
-let numOfChange = 0;
+const menu = document.getElementsByClassName('menu')[0];
+const searchButton = document.getElementById('search-btn');
+const searchInput = document.getElementById('search-input');
+
+const footerYear = document.getElementById('year');
+footerYear.innerText = new Date().getFullYear();
 
 
 window.addEventListener('load', () => {
     renderRestaurants(restaurants, 'all');
-
+  
     if (localStorage.city) {
         document.getElementById('city').innerText = localStorage.city;
     }
-
-});
-
-window.setInterval(changePic, 4000);
-
-promoPointPrev.addEventListener('click', () => {
-    if (numOfChange == 0) numOfChange = 1;
-    else if (numOfChange == 1) numOfChange = 2;
-    else numOfChange -= 2;
-    changePic();
-});
-
-promoPointNext.addEventListener('click', () => {
-    changePic();
+   
 });
 
 menu.addEventListener('click', (e) => {
@@ -174,25 +157,15 @@ menu.addEventListener('click', (e) => {
     renderRestaurants(restaurants, sort);
 });
 
-searchButton.addEventListener('click',()=>{
+searchButton.addEventListener('click', () => {
     search(searchInput.value);
 })
-
-function changePic() {
-
-    const url = '../img/'
-
-    promoBanner[0].children[0].src = url + picArr[numOfChange];
-
-    numOfChange = numOfChange < 2 ? numOfChange + 1 : 0;
-
-}
 
 function clearAllRestaurants() {
     const restaurantsSection = document.getElementsByClassName('restaurants')[0];
     const restaurantArr = document.getElementsByClassName('restaurant');
 
-    restaurantsSection.innerHTML='';
+    restaurantsSection.innerHTML = '';
 }
 
 function renderRestaurants(arr, sort) {
@@ -270,20 +243,21 @@ function renderRestaurant(parent, child) {
     parent.appendChild(section);
 }
 
-function search(name){
-    const resultArr=[];
-    
+function search(name) {
+    const resultArr = [];
+
     restaurants.forEach(element => {
-        if(element.name.toUpperCase().includes(name.toUpperCase()))resultArr.push(element);
+        if (element.name.toUpperCase().includes(name.toUpperCase())) resultArr.push(element);
     });
     clearAllRestaurants();
-    if(resultArr.length!=0){
-        renderRestaurants(resultArr,'all');
+    if (resultArr.length != 0) {
+        renderRestaurants(resultArr, 'all');
     } else {
-        const section=document.getElementsByClassName('restaurants')[0];
-        const h2=document.createElement('h2');
-        h2.innerText="No restaurants found"
+        const section = document.getElementsByClassName('restaurants')[0];
+        const h2 = document.createElement('h2');
+        h2.innerText = "No restaurants found"
         section.appendChild(h2);
     }
 }
+
 

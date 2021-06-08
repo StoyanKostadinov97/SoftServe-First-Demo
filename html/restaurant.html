@@ -6,32 +6,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/restaurant.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/promo.css">
     <title>Document</title>
 </head>
 
 <body>
     <header>
         <nav>
-            <a href="./home.html">LOGO</a>
-            <a href="./register.html">Register</a>
-            <a href="./login.html">Login</a>
-            <a href="" id="shoppingCart">
-                <img src="../icons/cart.png">
-                <div>0</div>
-            </a>
         </nav>
+        <aside id="shopping-list">
+
+            <div id='no-items'>
+                <h1>No items selected</h1>
+            </div>
+
+            <div id="total">
+                Total: <span id='total-price'></span>
+            </div>
+            <div id="cart"></div>
+
+        </aside>
     </header>
-    <aside>
-
-        <div id='no-items'>
-            <h1>No items selected</h1>
-        </div>
-
-        <div id="total">
-            Total: <span id='total-price'></span>
-        </div>
-
-    </aside>
 
     <section class="promo">
         <img src="../img/promo-summer.jpg">
@@ -50,16 +46,28 @@
         <a href=""><span id="restaurantName-in-nav"></span></a>
     </nav>
 
-    <h1> <span id="restaurantName"></span> </h1>
+    <h1> <span id="restaurantName"></span><img id="favourite-star" src="../icons/empty-star.png" alt=""> </h1>
+
+    <section class="rating-stars">
+        <img id="1-star" class="stars" src="../icons/empty-star-big.png">
+        <img id="2-star" class="stars" src="../icons/empty-star-big.png">
+        <img id="3-star" class="stars" src="../icons/empty-star-big.png">
+        <img id="4-star" class="stars" src="../icons/empty-star-big.png">
+        <img id="5-star" class="stars" src="../icons/empty-star-big.png">
+    </section>
 
     <article>
     </article>
 
     <footer>
-        Copyright &copy;  <span id="year"></span>, Stoyan Kostadinov
+        Copyright &copy; <span id="year"></span>, Stoyan Kostadinov
     </footer>
-    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="../js/restaurant.js"></script>
+    <script src="../js/header.js"></script>
+    <script src="../js/shopping-cart.js"></script>
+    <script src="../js/promo.js"></script>
 </body>
 
 </html>

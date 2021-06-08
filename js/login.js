@@ -22,6 +22,6 @@ document.getElementsByTagName('button')[0].addEventListener('click', () => {
         messagesEl.appendChild(message)
     } else {
         localStorage.loggedIn='true';
-        window.location.href = './restaurants.html';
+        window.location.href = './home.html';
     }
 })
