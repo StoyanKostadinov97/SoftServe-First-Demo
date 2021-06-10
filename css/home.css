@@ -47,6 +47,9 @@ header nav a:first-of-type {
   margin-left: 7vw;
   font-size: 2vw;
 }
+header img {
+  height: 2vw;
+}
 article {
   width: 100%;
   height: fit-content;

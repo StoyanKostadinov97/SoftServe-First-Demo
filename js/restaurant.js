@@ -105,7 +105,7 @@ $('.stars').hover(
             $(`#${i}-star`).prop('src', '../icons/empty-star-big.png');
         }
 
-    });
+});
 
 $('.stars').click(function () {
     isGivedRating = true;
@@ -118,11 +118,12 @@ $('.stars').click(function () {
 
 $('#favourite-star').click(function () {
     const user = localStorage.user ? JSON.parse(localStorage.user) : undefined;
-    const index = user ? user.favourite.findIndex(x => x === restaurant.name) : -1;
-    if(!user){
+    if (!user) {
         alert(' You need to be logged in to add favourites!');
         return;
     }
+    
+    const index = user.favourite ? user.favourite.findIndex(x => x === restaurant.name) : -1;
     if (index >= 0) {
 
         $(this).prop('src', '../icons/empty-star.png');

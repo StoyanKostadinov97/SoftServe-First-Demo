@@ -54,7 +54,7 @@ function renderFoodInCart(food) {
     minus.innerText='-';
     div.appendChild(minus);
     minus.addEventListener('click',(e)=>{
-        decreasePrice(food.obj.price);
+        decreasePrice(food.obj.price,1);
         e.target.parentElement.children[1].innerText=--food.num;
     })
 
@@ -98,7 +98,7 @@ function updateFoodInCart(){
 }
 
 function cartRemoveHandler(event, element) {
-    decreasePrice(element.obj.price);
+    decreasePrice(element.obj.price,element.num);
     const target = event.target.parentElement;
     document.getElementById('cart').removeChild(target);
     const index = chosenFood.findIndex(x => x == element);
@@ -114,9 +114,9 @@ function increasePrice(priceString) {
     document.getElementById('total-price').innerText = total.toFixed(2);
 }
 
-function decreasePrice(priceString) {
+function decreasePrice(priceString,num) {
     const arr = priceString.split(' ');
     price = +arr[0];
-    total -= price;
+    total -= price*num;
     document.getElementById('total-price').innerText = total.toFixed(2);
 }
